@@ -1,0 +1,59 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.20"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "l2_old_v3_5_home",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "l2_old_v3_5_home::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-l2_old_v3_5_home-Debug-aa95891f806009596db2.json",
+					"name" : "l2_old_v3_5_home",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/J1772 L2 Charger/Git/estation_v3_5_1_Home_control/Code/v3_5_1/l2_old_v3_5_home/build/debug/build",
+		"source" : "D:/J1772 L2 Charger/Git/estation_v3_5_1_Home_control/Code/v3_5_1/l2_old_v3_5_home"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 2
+	}
+}

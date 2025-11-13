@@ -1,0 +1,4 @@
+../Core/Src/STM32F103_EEPROM.c:23:6:Flash_Init	0	static
+../Core/Src/STM32F103_EEPROM.c:35:6:EEPROM_Erase	32	static
+../Core/Src/STM32F103_EEPROM.c:58:6:EEPROM_WriteData	16	static
+../Core/Src/STM32F103_EEPROM.c:78:6:EEPROM_ReadData	0	static

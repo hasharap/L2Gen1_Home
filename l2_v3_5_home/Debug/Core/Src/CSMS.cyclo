@@ -1,0 +1,6 @@
+../Core/Src/CSMS.c:227:17:CSMS_modbusCRC	3
+../Core/Src/CSMS.c:45:6:CSMS_Intick	1
+../Core/Src/CSMS.c:115:6:CSMS_transmitSerial	4
+../Core/Src/CSMS.c:137:6:CSMS_receiveSerial	17
+../Core/Src/CSMS.c:776:6:CSMS_Init	1
+../Core/Src/CSMS.c:781:6:CSMS_functions	47

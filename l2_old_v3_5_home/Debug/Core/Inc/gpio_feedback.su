@@ -1,0 +1,2 @@
+../Core/Inc/gpio_feedback.c:14:13:get_ContactorFB	8	static
+../Core/Inc/gpio_feedback.c:38:6:get_GPIOFeedback	8	static

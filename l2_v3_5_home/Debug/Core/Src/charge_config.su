@@ -1,0 +1,3 @@
+../Core/Src/charge_config.c:39:6:get_chargerConfig	8	static
+../Core/Src/charge_config.c:61:6:set_chargerConfig	16	static
+../Core/Src/charge_config.c:85:6:get_HWVersion	8	static

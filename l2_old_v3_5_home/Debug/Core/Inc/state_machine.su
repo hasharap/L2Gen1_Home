@@ -1,0 +1,15 @@
+../Core/Inc/state_machine.c:65:6:sm_control_run	8	static
+../Core/Inc/state_machine.c:113:6:stateA_transition	16	static
+../Core/Inc/state_machine.c:139:6:stateB_transition	16	static
+../Core/Inc/state_machine.c:165:6:stateC_transition	16	static
+../Core/Inc/state_machine.c:191:6:stateD_transition	4	static
+../Core/Inc/state_machine.c:210:6:power_on	4	static
+../Core/Inc/state_machine.c:215:6:stateA1	8	static
+../Core/Inc/state_machine.c:267:6:stateA2	8	static
+../Core/Inc/state_machine.c:319:6:stateB1	8	static
+../Core/Inc/state_machine.c:400:6:stateB2	8	static
+../Core/Inc/state_machine.c:500:6:stateC1	8	static
+../Core/Inc/state_machine.c:604:6:stateC2	8	static
+../Core/Inc/state_machine.c:706:6:stateF	8	static
+../Core/Inc/state_machine.c:740:6:temp_stateF	8	static
+../Core/Inc/state_machine.c:780:6:charger_variable_init	4	static

@@ -1,0 +1,6 @@
+  if( ((isrflags & USART_SR_ORE) != RESET) && ((isrflags & USART_SR_RXNE) == RESET) )
+  {
+	  __HAL_UART_CLEAR_FLAG(huart, HAL_UART_ERROR_ORE);
+    huart->ErrorCode |= HAL_UART_ERROR_ORE;
+    return;
+  }

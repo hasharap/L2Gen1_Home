@@ -1,0 +1,7 @@
+../Core/Inc/modbusRTU.c:59:6:transmitRS485_Port2	16	static
+../Core/Inc/modbusRTU.c:67:10:modbus_CRC	24	static
+../Core/Inc/modbusRTU.c:86:6:modbus_Verify	8	static
+../Core/Inc/modbusRTU.c:106:6:modbus_Send	48	static
+../Core/Inc/modbusRTU.c:157:6:transmit_Modbus	24	static
+../Core/Inc/modbusRTU.c:216:6:modbus_fill	24	static
+../Core/Inc/modbusRTU.c:266:6:receive_Modbus	24	static

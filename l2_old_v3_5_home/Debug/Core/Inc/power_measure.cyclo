@@ -1,0 +1,2 @@
+../Core/Inc/power_measure.c:49:6:calculate_Energy	8
+../Core/Inc/power_measure.c:93:6:get_EnergyMeterData	1

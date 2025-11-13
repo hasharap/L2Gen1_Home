@@ -1,0 +1,6 @@
+../Core/Src/protection.c:628:6:errorDetector	24	static
+../Core/Src/protection.c:693:6:errorHandler	16	static
+../Core/Src/protection.c:838:6:errorBuffer_log	8	static
+../Core/Src/protection.c:860:6:errorBuffer_report	8	static
+../Core/Src/protection.c:885:6:errorAlarm	0	static
+../Core/Src/protection.c:909:6:errorBuffer_clear	0	static

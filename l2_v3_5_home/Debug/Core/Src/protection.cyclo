@@ -1,0 +1,6 @@
+../Core/Src/protection.c:628:6:errorDetector	80
+../Core/Src/protection.c:693:6:errorHandler	26
+../Core/Src/protection.c:838:6:errorBuffer_log	2
+../Core/Src/protection.c:860:6:errorBuffer_report	3
+../Core/Src/protection.c:885:6:errorAlarm	1
+../Core/Src/protection.c:909:6:errorBuffer_clear	1

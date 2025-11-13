@@ -1,0 +1,9 @@
+../Core/Inc/modbus_devices/modbusRTU.c:463:17:ModbusRTU_CRC	3
+../Core/Inc/modbus_devices/modbusRTU.c:501:13:ModbusRTU_checksum	2
+../Core/Inc/modbus_devices/modbusRTU.c:86:6:ModbusRTU_Intick	1
+../Core/Inc/modbus_devices/modbusRTU.c:120:6:ModbusRTU_queueSerial	13
+../Core/Inc/modbus_devices/modbusRTU.c:213:6:ModbusRTU_transmitSerial	9
+../Core/Inc/modbus_devices/modbusRTU.c:240:6:ModbusRTU_receiveSerial	16
+../Core/Inc/modbus_devices/modbusRTU.c:434:6:ModbusRTU_sniffTxCommand	3
+../Core/Inc/modbus_devices/modbusRTU.c:581:6:ModbusRTU_Init	1
+../Core/Inc/modbus_devices/modbusRTU.c:590:6:ModbusRTU_functions	12

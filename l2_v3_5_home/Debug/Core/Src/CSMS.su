@@ -1,0 +1,6 @@
+../Core/Src/CSMS.c:227:17:CSMS_modbusCRC	12	static
+../Core/Src/CSMS.c:45:6:CSMS_Intick	0	static
+../Core/Src/CSMS.c:115:6:CSMS_transmitSerial	16	static
+../Core/Src/CSMS.c:137:6:CSMS_receiveSerial	24	static
+../Core/Src/CSMS.c:776:6:CSMS_Init	0	static
+../Core/Src/CSMS.c:781:6:CSMS_functions	72	static

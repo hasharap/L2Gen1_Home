@@ -1,0 +1,10 @@
+../Core/Inc/CSMS.c:44:6:CSMS_Intick	4	static
+../Core/Inc/CSMS.c:74:13:CSMS_queueSerial	32	static
+../Core/Inc/CSMS.c:114:6:CSMS_transmitSerial	16	static
+../Core/Inc/CSMS.c:136:6:CSMS_receiveSerial	16	static
+../Core/Inc/CSMS.c:226:17:CSMS_modbusCRC	24	static
+../Core/Inc/CSMS.c:245:13:CSMS_checksum	24	static
+../Core/Inc/CSMS.c:263:13:CSMS_setmSerial	56	static
+../Core/Inc/CSMS.c:637:13:CSMS_getmSerial	24	static
+../Core/Inc/CSMS.c:772:6:CSMS_Init	4	static
+../Core/Inc/CSMS.c:777:6:CSMS_functions	8	static

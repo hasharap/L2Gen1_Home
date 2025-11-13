@@ -1,0 +1,26 @@
+Development branch check
+26/06/2023 - 03.32PM - Nisal 	- Added state machine start checks, scheduled charge bug fix
+12SEP2023 - 12.00PM - Nisal 	- Development branch commit check
+14SEP2023 - 09.45AM - Nisal 	- Serial issue resolved. Three phase.
+18SEP2023 - 10.42PM - Nisal 	- Serial issue resolved.
+19SEP2023 - 09.49AM - Hashan 	- GFIC update.  
+19SEP2023 - 04.12PM - Nisal 	- Serial error fix. Tested schedule charge. 
+22SEP2023 - 10.53AM - Nisal 	- Fixed schedule charge bug(need to run tests)
+30NOV2023 - 01.07PM - Nisal
+08JAN2024 - 03.15PM - Nisal
+18JAN2024 - 09.15AM - Nisal
+19JAN2024 - 02.28AM - Nisal		- Changed CP getVoltage function, fixed bug in state machine - State C2 - Stop by app
+27JAN2024 - 11.30AM - Nisal		- Implemented proper contactor feedback funstion. Resolved diode check function errors. Fixed new CP get function.
+29JAN2024 - 02.56PM - Nisal		- Adjust over current limit
+08FEB2024 - 04.10PM - Nisal
+10FEB2024 - 11.37PM - Nisal     - Single phase Serial packet fix. Error alarm addition.
+15FEB2024 - 06.37PM - Nisal
+26MAY2024 - 03.35PM - Nisal		- Before major code update from commercial version.
+17JUL2024 - 09.27PM - Nisal		- New CP update
+26JUL2024 - 06.55PM - Nisal		- Updated protection functions. Change single phase energy meter values.
+02AUG2024 - 05.50PM - Nisal		- Change error log functions. Update vehicle check function. Update CP duty set fucntion. Change GFI error handling.
+22AUG2024 - Nisal
+09SEP2024 - 03.00PM - Nisal		- Charger config update. New flash locations.
+11AUG2024 - 12.00PM - Nisal		
+13AUF2024 - 10.00AM - Nisal		- CP actual voltage testing.
+13AUF2024 - 11.20AM - Nisal		

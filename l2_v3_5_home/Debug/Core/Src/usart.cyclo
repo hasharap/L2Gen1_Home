@@ -1,0 +1,9 @@
+../Core/Src/usart.c:229:13:huart3TransmitIT	2
+../Core/Src/usart.c:216:13:huart1TransmitIT	2
+../Core/Src/usart.c:38:6:MX_USART1_UART_Init	2
+../Core/Src/usart.c:67:6:MX_USART3_UART_Init	2
+../Core/Src/usart.c:95:6:HAL_UART_MspInit	3
+../Core/Src/usart.c:161:6:HAL_UART_MspDeInit	3
+../Core/Src/usart.c:242:6:transmitSerial	1
+../Core/Src/usart.c:248:6:HAL_UART_RxCpltCallback	3
+../Core/Src/usart.c:275:6:HAL_UART_TxCpltCallback	1

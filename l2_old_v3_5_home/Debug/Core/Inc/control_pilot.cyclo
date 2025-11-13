@@ -1,0 +1,13 @@
+../Core/Inc/control_pilot.c:108:6:readCP_stored	1
+../Core/Inc/control_pilot.c:117:6:saveCP_store	1
+../Core/Inc/control_pilot.c:127:6:cp_map	2
+../Core/Inc/control_pilot.c:242:10:calculateCMA	1
+../Core/Inc/control_pilot.c:246:6:getCP_voltage	14
+../Core/Inc/control_pilot.c:483:6:calibrateCP	2
+../Core/Inc/control_pilot.c:605:6:load_balance	3
+../Core/Inc/control_pilot.c:698:6:monitor_cp	9
+../Core/Inc/control_pilot.c:763:6:setCP_duty	5
+../Core/Inc/control_pilot.c:824:6:diodeCheck	6
+../Core/Inc/control_pilot.c:852:6:bootup_vehicleCheck	6
+../Core/Inc/control_pilot.c:878:6:check_vehicleConnector	6
+../Core/Inc/control_pilot.c:906:6:check_PWMActive	6

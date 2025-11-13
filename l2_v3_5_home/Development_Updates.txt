@@ -1,0 +1,14 @@
+
+Hashara - March 19th 2025 :  f_w virsion 302
+                   added some code part to solve getting  energy transaction 0 issue
+                   RTC bug fixing (compare with the l2_old_v3_5_home)
+                   bug fixed in schedule charge state changings
+                   add Energy Meter identifying method
+
+                   
+ Hashara - August 13th 2025 :  f_w virsion 303
+                               (1) added loadbalancing feature 
+                               (2) enable undervoltage handling with few changes 
+                  
+                   
+                                 

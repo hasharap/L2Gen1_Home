@@ -1,0 +1,38 @@
+/*
+ * gpio_hal.h
+ *
+ *  Created on: Aug 30, 2022
+ *      Author: Nisal Bulathsinghala
+ */
+
+#ifndef INC_GPIO_HAL_H_
+#define INC_GPIO_HAL_H_
+
+#include "main.h"
+
+#define CP_TEST_ON()		HAL_GPIO_WritePin(GPIOA, CP_TEST_Pin, GPIO_PIN_SET)
+#define CP_TEST_OFF()		HAL_GPIO_WritePin(GPIOA, CP_TEST_Pin, GPIO_PIN_RESET)
+//#define N_RELAY_ON()		HAL_GPIO_WritePin(GPIOA, N_RELAY_Pin, GPIO_PIN_SET)
+//#define N_RELAY_OFF()		HAL_GPIO_WritePin(GPIOA, N_RELAY_Pin, GPIO_PIN_RESET)
+#define L_RELAY_ON()		HAL_GPIO_WritePin(GPIOB, L_RELAY_Pin, GPIO_PIN_SET)
+#define L_RELAY_OFF()		HAL_GPIO_WritePin(GPIOB, L_RELAY_Pin, GPIO_PIN_RESET)
+#define GFIC_RESET_ON()		HAL_GPIO_WritePin(GPIOB, GFIC_RESET_Pin, GPIO_PIN_SET)
+#define GFIC_RESET_OFF()	HAL_GPIO_WritePin(GPIOB, GFIC_RESET_Pin, GPIO_PIN_RESET)
+#define EC_TEST_ON()		HAL_GPIO_WritePin(GPIOA, EC_TEST_Pin, GPIO_PIN_SET)
+#define EC_TEST_OFF()		HAL_GPIO_WritePin(GPIOA, EC_TEST_Pin, GPIO_PIN_RESET)
+#define EC_SENSE()			HAL_GPIO_ReadPin(GPIOB, EC_SENSE_Pin)
+#define GFIC_TEST_SENSE()	HAL_GPIO_ReadPin(GPIOB, GFIC_TEST_SENSE_Pin)
+#define PWR_RESET_ON()		HAL_GPIO_WritePin(GPIOB, PWR_RESET_Pin, GPIO_PIN_SET)
+#define PWR_RESET_OFF()		HAL_GPIO_WritePin(GPIOB, PWR_RESET_Pin, GPIO_PIN_RESET)
+#define GFIC_SENSE()		HAL_GPIO_ReadPin(GPIOB, GFIC_SENSE_Pin)
+#define GFIC_TEST_ON()		HAL_GPIO_WritePin(GPIOB, GFIC_TEST_Pin, GPIO_PIN_SET)
+#define GFIC_TEST_OFF()		HAL_GPIO_WritePin(GPIOB, GFIC_TEST_Pin, GPIO_PIN_RESET)
+#define BOARD_LED_ON()		HAL_GPIO_WritePin(GPIOB, BOARD_LED_Pin, GPIO_PIN_SET)
+#define BOARD_LED_OFF()		HAL_GPIO_WritePin(GPIOB, BOARD_LED_Pin, GPIO_PIN_RESET)
+#define BUZZER_ON()			HAL_GPIO_WritePin(GPIOB, BUZZER_Pin, GPIO_PIN_SET)
+#define BUZZER_OFF()		HAL_GPIO_WritePin(GPIOB, BUZZER_Pin, GPIO_PIN_RESET)
+#define C_FB()				(!HAL_GPIO_ReadPin(GPIOB, C_FB_Pin))
+#define MODE_SET()			HAL_GPIO_ReadPin(MODE_SET_GPIO_Port, MODE_SET_Pin)
+#define PHASE_SET()			HAL_GPIO_ReadPin(PHASE_SET_GPIO_Port, PHASE_SET_Pin)
+
+#endif /* INC_GPIO_HAL_H_ */

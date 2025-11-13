@@ -1,0 +1,8 @@
+../Core/Inc/rtc.c:81:6:initRTC	4	static
+../Core/Inc/rtc.c:130:10:RTC_ToEpoch	32	static
+../Core/Inc/rtc.c:161:6:RTC_FromEpoch	96	static
+../Core/Inc/rtc.c:216:6:get_date	16	static
+../Core/Inc/rtc.c:261:6:get_alarm	8	static
+../Core/Inc/rtc.c:272:6:updateRTC	16	static
+../Core/Inc/rtc.c:312:6:updateAlarm	4	static
+../Core/Inc/rtc.c:346:6:checkWeekday_Time	4	static

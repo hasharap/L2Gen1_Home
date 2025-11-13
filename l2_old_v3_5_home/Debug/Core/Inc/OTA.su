@@ -1,0 +1,4 @@
+../Core/Inc/OTA.c:5:17:GetPage	24	static
+../Core/Inc/OTA.c:19:10:Write_Data	56	static
+../Core/Inc/OTA.c:70:6:Read_Data	24	static
+../Core/Inc/OTA.c:82:6:Flag_up	16	static

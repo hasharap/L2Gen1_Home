@@ -1,0 +1,25 @@
+L2 v3.5 Home - Firmware Update Release Notes
+Version: v2.9.8
+Release Date: 11 AUG 2024
+Author: Nisal Bulathsinghalage
+
+New Features:
+Feature 1: Charger remote config enabled.
+Feature 2: OTA firmware update feature enabled.
+Feature 3: GFI trip ability to enable or disable.
+Feature 4: GFI trip ability to enable or disable.
+
+Improvements:
+Improvement 1: Improved protection function.
+
+Bug Fixes:
+Bug 1: GFI trip will not clear until the connector is removed.
+
+Security Updates:
+-nil-
+
+Known Issues:
+Issue 1: GFI Test is not operational due to a test pin voltage issue.
+
+Update Procedure:
+-nil-

@@ -1,0 +1,2 @@
+../Core/Src/power_measure.c:44:6:calculate_Energy	8	static
+../Core/Src/power_measure.c:94:6:get_EnergyMeterData	0	static

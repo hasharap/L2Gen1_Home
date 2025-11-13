@@ -1,0 +1,4 @@
+../Core/Inc/OTA.c:5:17:GetPage	4
+../Core/Inc/OTA.c:19:10:Write_Data	4
+../Core/Inc/OTA.c:70:6:Read_Data	2
+../Core/Inc/OTA.c:82:6:Flag_up	1

@@ -1,0 +1,12 @@
+../Core/Src/control_pilot.c:117:6:readCP_stored	1
+../Core/Src/control_pilot.c:126:6:saveCP_store	1
+../Core/Src/control_pilot.c:136:6:cp_map	1
+../Core/Src/control_pilot.c:239:6:getCP_voltage	14
+../Core/Src/control_pilot.c:380:6:calibrateCP	2
+../Core/Src/control_pilot.c:515:6:load_balance	21
+../Core/Src/control_pilot.c:678:6:monitor_cp	9
+../Core/Src/control_pilot.c:701:6:setCP_duty	6
+../Core/Src/control_pilot.c:766:6:check_diode	6
+../Core/Src/control_pilot.c:794:6:bootup_vehicleCheck	6
+../Core/Src/control_pilot.c:844:6:check_vehicleConnector	6
+../Core/Src/control_pilot.c:870:6:check_PWMActive	6

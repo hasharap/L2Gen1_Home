@@ -1,0 +1,5 @@
+../Core/Inc/data_structures.c:49:6:init_dataStructures	1
+../Core/Inc/data_structures.c:132:6:get_chargerConfig	1
+../Core/Inc/data_structures.c:148:6:set_chargerConfig	1
+../Core/Inc/data_structures.c:164:6:get_HWVersion	1
+../Core/Inc/data_structures.c:175:6:buzzer_on	1

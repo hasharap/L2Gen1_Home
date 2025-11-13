@@ -1,0 +1,13 @@
+../Core/Inc/modbus_devices/modbusRTU.c:86:6:ModbusRTU_Intick	1
+../Core/Inc/modbus_devices/modbusRTU.c:120:6:ModbusRTU_queueSerial	15
+../Core/Inc/modbus_devices/modbusRTU.c:183:13:ModbusRTU_TxCompleteService	1
+../Core/Inc/modbus_devices/modbusRTU.c:191:13:ModbusRTU_RxCompleteService	5
+../Core/Inc/modbus_devices/modbusRTU.c:213:6:ModbusRTU_transmitSerial	6
+../Core/Inc/modbus_devices/modbusRTU.c:240:6:ModbusRTU_receiveSerial	17
+../Core/Inc/modbus_devices/modbusRTU.c:434:6:ModbusRTU_sniffTxCommand	3
+../Core/Inc/modbus_devices/modbusRTU.c:463:17:ModbusRTU_CRC	4
+../Core/Inc/modbus_devices/modbusRTU.c:501:13:ModbusRTU_checksum	7
+../Core/Inc/modbus_devices/modbusRTU.c:519:13:ModbusRTU_getData	6
+../Core/Inc/modbus_devices/modbusRTU.c:566:13:ModbusRTU_FaultService	2
+../Core/Inc/modbus_devices/modbusRTU.c:581:6:ModbusRTU_Init	1
+../Core/Inc/modbus_devices/modbusRTU.c:590:6:ModbusRTU_functions	3

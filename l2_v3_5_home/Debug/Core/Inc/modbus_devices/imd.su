@@ -1,0 +1,9 @@
+../Core/Inc/modbus_devices/imd.c:34:6:imd_getData	8	static
+../Core/Inc/modbus_devices/imd.c:84:6:imd_enableMonitoring	136	static
+../Core/Inc/modbus_devices/imd.c:95:6:imd_disableMonitoring	136	static
+../Core/Inc/modbus_devices/imd.c:107:6:imd_busVoltage	136	static
+../Core/Inc/modbus_devices/imd.c:117:6:imd_evVoltage	136	static
+../Core/Inc/modbus_devices/imd.c:127:6:imd_positiveResistance	136	static
+../Core/Inc/modbus_devices/imd.c:137:6:imd_negativeResistance	136	static
+../Core/Inc/modbus_devices/imd.c:147:6:imd_ioStatus	136	static
+../Core/Inc/modbus_devices/imd.c:161:6:imd_setInsulationMonitoring	0	static

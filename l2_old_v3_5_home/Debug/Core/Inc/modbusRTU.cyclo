@@ -1,0 +1,7 @@
+../Core/Inc/modbusRTU.c:59:6:transmitRS485_Port2	1
+../Core/Inc/modbusRTU.c:67:10:modbus_CRC	4
+../Core/Inc/modbusRTU.c:86:6:modbus_Verify	5
+../Core/Inc/modbusRTU.c:106:6:modbus_Send	10
+../Core/Inc/modbusRTU.c:157:6:transmit_Modbus	11
+../Core/Inc/modbusRTU.c:216:6:modbus_fill	10
+../Core/Inc/modbusRTU.c:266:6:receive_Modbus	7

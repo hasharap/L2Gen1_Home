@@ -1,0 +1,4 @@
+../Core/Inc/STM32F103_EEPROM.c:10:6:Flash_Init	1
+../Core/Inc/STM32F103_EEPROM.c:16:6:EEPROM_Erase	1
+../Core/Inc/STM32F103_EEPROM.c:33:6:EEPROM_WriteData	2
+../Core/Inc/STM32F103_EEPROM.c:47:6:EEPROM_ReadData	2
