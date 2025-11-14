@@ -30,6 +30,7 @@ typedef struct tick_tock_struct
     bool timeout_2s;       /**< Timeout flag for 2 seconds. */
     bool timeout_3s;       /**< Timeout flag for 3 seconds. */
     bool timeout_4s;       /**< Timeout flag for 4 seconds. */
+    bool timeout_5s;       /**< Timeout flag for 5 seconds. */
     bool timeout_6s;       /**< Timeout flag for 6 seconds. */
     bool timeout_8s;       /**< Timeout flag for 8 seconds. */
     bool timeout_10s;      /**< Timeout flag for 10 seconds. */
@@ -70,9 +71,8 @@ extern volatile tick_tock rtc_updateCounter;
 extern volatile tick_tock serial_error;
 
 /** @brief Global timer instance for load balancing every 6 seconds. */
-extern volatile tick_tock load_balance6s;
+extern volatile tick_tock load_balance5s;
 
-extern volatile tick_tock load_balance0_5s;
 
 /** @brief Global timer instance for error handling. */
 extern volatile tick_tock error_handler;

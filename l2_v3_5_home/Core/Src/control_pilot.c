@@ -14,12 +14,6 @@
 #include "control_pilot.h"
 
 
-//remove below
-int16_t networksideCurrent[50];
-int16_t setduty[50];
-int16_t maxchargingCurrent[50];
-uint16_t lbt =0;
-//remove above
 
 
 #define OLD_CP		0
@@ -29,6 +23,7 @@ int min_count = 0;
 #define samples     75
 #define samples2    25
 #define samples3    5
+#define POINT6      0.6
 
 uint16_t cp_adc[250] = {0};
 uint16_t cp_adc_count = 0;
@@ -106,13 +101,11 @@ uint8_t vehicle_checkOutCounter = 0;
 bool cp_calibrate = false;
 
 
-static int32_t current_sum = 0;
-static uint16_t packet_count = 0;
-float max_charging_current =0;
-int16_t setCPduty;
+float max_phase_current =0;
+int16_t SetCPduty = 0;
+int16_t SetCurrent = 0 ;
 
 
-uint16_t cp_max_duty =0;
 
 void readCP_stored(void)
 {
@@ -433,7 +426,7 @@ void calibrateCP(int action)
 		TIM1->CCR4 = (uint32_t) (PWMFULLON * 10);
 		HAL_Delay(500); //Give some time to settle
 #else
-		uint16_t CP_val2 = 0;
+//		uint16_t CP_val2 = 0;
 
 		//-------------------------------------------(+12V) Generation
 		TIM1->CCR1 = (uint32_t) (PWMFULLON * 10);
@@ -459,6 +452,9 @@ void calibrateCP(int action)
 	}
 
 	cp_calibrate = true;
+
+
+
 	/*
 	 else{
 	 buzzer_on();
@@ -514,31 +510,12 @@ static inline float find_highest(uint16_t a, uint16_t b, uint16_t c)
  */
 void load_balance(bool uv_en)
 {
-	if (load_balance6s.timeout_6s == false)
+	if (load_balance5s.timeout_5s == false)
 	{
-        if(load_balance0_5s.timeout_0_5s == true)
-        {
-        	max_charging_current = find_highest(powerSide_data.current.IA , powerSide_data.current.IB ,powerSide_data.current.IC);
-
-			if(networkSide_data.loadBalancing_en == 1)
-			{
-				current_sum += (int32_t)(charger_configGet.max_current - networkSide_data.maxCurrent_req + max_charging_current);
-				packet_count++;
-			}
-			else if(networkSide_data.loadBalancing_en == 0 || networkSide_data.loadBalancing_en == 2)
-			{
-				current_sum += (int32_t)networkSide_data.maxCurrent_req ;
-				packet_count++;
-			}
-
-			tick_clear(&load_balance0_5s);
-
-        }
-
 		return;
 	}
 
-	tick_clear(&load_balance6s);
+	tick_clear(&load_balance5s);
 
 
 #if UV_dynamic
@@ -615,35 +592,22 @@ void load_balance(bool uv_en)
 			return;
 		}
 
-		setCPduty = (int16_t) (current_sum /( packet_count * 0.6));
-	    cp_max_duty = (uint16_t)(charger_configGet.max_current / 0.6);
+		max_phase_current = find_highest(powerSide_data.current.IA , powerSide_data.current.IB ,powerSide_data.current.IC);
 
-		if (setCPduty <= CPMIN)
+		if(networkSide_data.loadBalancing_en == 1)
 		{
-			controlSide_data.controlPilot.PWMSET = CPMIN;
-			controlSide_data.warnings.bits.UC_warn =1;
+			/* Calculation has some type conversion issues */
+			SetCurrent = (charger_configGet.max_current - networkSide_data.maxCurrent_req + max_phase_current);
+			controlSide_data.controlPilot.PWMSET = (uint16_t)(SetCurrent / POINT6);
+
 		}
-		else if(setCPduty >= cp_max_duty)
+		else if(networkSide_data.loadBalancing_en == 0 || networkSide_data.loadBalancing_en == 2)
 		{
-			controlSide_data.controlPilot.PWMSET = cp_max_duty;
-		}
-		else
-		{
-			controlSide_data.controlPilot.PWMSET = (uint16_t)setCPduty;
-			controlSide_data.warnings.bits.UC_warn =0;
+			SetCurrent = networkSide_data.maxCurrent_req;
+			controlSide_data.controlPilot.PWMSET = (uint16_t)(SetCurrent / POINT6);
+
 		}
 
-		networksideCurrent[lbt] = (uint16_t)networkSide_data.maxCurrent_req;
-		setduty[lbt]  = (uint16_t)controlSide_data.controlPilot.PWMSET;
-		maxchargingCurrent[lbt] = (uint16_t)max_charging_current;
-        lbt++;
-        if(lbt>=50)
-        {
-        	lbt=0;
-        }
-
-		current_sum  = 0; // reset variables
-		packet_count = 0;
 
 
 }
@@ -682,47 +646,30 @@ void monitor_cp(void)
 		check_CPF();
 	}
 
-	if (controlSide_data.controlPilot.PWMSET < CPMIN)
+    uint16_t MaxCpDuty = (uint16_t)(charger_configGet.max_current / POINT6 );
+
+	if(controlSide_data.controlPilot.PWMSET >= MaxCpDuty)
 	{
-		cpMin_reached = true;
-		return;
+		controlSide_data.controlPilot.PWMSET = MaxCpDuty;
+		controlSide_data.warnings.bits.UC_warn = 0;  // down the flag of under current warning
+	}
+	else if (controlSide_data.controlPilot.PWMSET < CPMIN)
+	{
+		controlSide_data.controlPilot.PWMSET = CPMIN;
+		controlSide_data.warnings.bits.UC_warn =1;  // up the flag of under current warning
+
+	}
+	else
+	{
+		controlSide_data.warnings.bits.UC_warn = 0;  // down the flag of under current warning
 	}
 
-	cpMin_reached = false;
 
-	 cp_max_duty = (uint16_t)(charger_configGet.max_current / 0.6);
 
-	if (controlSide_data.controlPilot.PWMSET >= cp_max_duty)
-	{
-		controlSide_data.controlPilot.PWMSET = cp_max_duty;
-	}
 }
 
 void setCP_duty(void)
 {
-//	if (currentState == STATE_F)
-//	{
-//		if (controlSide_data.status.bit.cpPWM_active == 1)
-//		{
-//			controlSide_data.controlPilot.cpDuty = PWMFULLON;
-//		}
-//		else
-//		{
-//			controlSide_data.controlPilot.cpDuty = PWMFULLOFF;
-//		}
-//	}
-//	else
-//	{
-//		if (controlSide_data.status.bit.cpPWM_active == 1)
-//		{
-//			controlSide_data.controlPilot.cpDuty =
-//					controlSide_data.controlPilot.PWMSET;
-//		}
-//		else
-//		{
-//			controlSide_data.controlPilot.cpDuty = PWMFULLON;
-//		}
-//	}
 	if (sm.currentState == STATE_F)
 	{
 		if (controlSide_data.controlPilot.cp_enable == 1)
@@ -793,29 +740,7 @@ void check_diode(void)
 
 void bootup_vehicleCheck(void)
 {
-//	if ((controlSide_data.controlPilot.cp_max > stateA_Vmin)
-//			&& (controlSide_data.controlPilot.cp_max < stateA_Vmax))
-//	{
-//		controlSide_data.networkSide_request.bit.vehicle_Check = 0;
-//	}
-//	else
-//	{
-//		controlSide_data.networkSide_request.bit.vehicle_Check = 1;
-//
-//		if ((controlSide_data.controlPilot.cp_max > stateB_Vmin) 	//Jump to STATE B1
-//		&& (controlSide_data.controlPilot.cp_max < stateB_Vmax))
-//		{
-//			stateEntry_flag = true;
-//			currentState = STATE_B1;
-//		}
-//
-//		if ((controlSide_data.controlPilot.cp_max > stateC_Vmin) 	//Jump to STATE C1
-//		&& (controlSide_data.controlPilot.cp_max < stateC_Vmax))
-//		{
-//			stateEntry_flag = true;
-//			currentState = STATE_C1;
-//		}
-//	}
+
 	if (controlSide_data.controlPilot.cp_Vmax > STATEA_MIN)
 	{
 		controlSide_data.networkSide_request.bit.vehicle_Check = 0;

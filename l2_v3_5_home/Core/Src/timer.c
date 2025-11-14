@@ -29,6 +29,7 @@ void tick_clear(volatile tick_tock *timer_ptr)
     timer_ptr->timeout_2s = 0;
     timer_ptr->timeout_3s = 0;
     timer_ptr->timeout_4s = 0;
+    timer_ptr->timeout_5s = 0;
     timer_ptr->timeout_6s = 0;
     timer_ptr->timeout_8s = 0;
     timer_ptr->timeout_10s = 0;
@@ -71,6 +72,9 @@ void tick_count(volatile tick_tock *timer_ptr)
         case 8000:
             timer_ptr->timeout_4s = true;
             break;
+        case 10000:
+        	timer_ptr->timeout_5s = true;
+        	break;
         case 12000:
             timer_ptr->timeout_6s = true;
             break;
@@ -116,9 +120,8 @@ volatile tick_tock rtc_updateCounter;
 volatile tick_tock serial_error;
 
 /** @brief Timer instance for load balancing every 6 seconds. */
-volatile tick_tock load_balance6s;
+volatile tick_tock load_balance5s;
 
-volatile tick_tock load_balance0_5s;
 
 /** @brief Timer instance for error handling. */
 volatile tick_tock error_handler;

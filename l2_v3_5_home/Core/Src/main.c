@@ -158,8 +158,7 @@ int main(void)
 	tick_clear(&rtc_checkCounter);
 	tick_clear(&rtc_updateCounter);
 	tick_clear(&serial_error);
-	tick_clear(&load_balance6s);
-	tick_clear(&load_balance0_5s);
+	tick_clear(&load_balance5s);
 	tick_clear(&error_handler);
   /* USER CODE END 2 */
 
@@ -427,9 +426,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		tick_count(&timeout);
 		tick_count(&gfi_test);
 		tick_count(&serial_error);
-		tick_count(&load_balance6s);
+		tick_count(&load_balance5s);
 		tick_count(&error_handler);
-		tick_count(&load_balance0_5s);
+
 
 		//added by me
 		tick_count(&rtc_checkCounter);
