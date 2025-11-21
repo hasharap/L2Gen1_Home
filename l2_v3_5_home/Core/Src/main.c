@@ -98,19 +98,19 @@ int main(void)
   MX_TIM1_Init();
   MX_TIM3_Init();
   MX_USART1_UART_Init();
-//  MX_IWDG_Init();
+  //MX_IWDG_Init();
   MX_USART3_UART_Init();
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
 
-	/*---------------------------------------------------
-	 Initialization function
-	 ---------------------------------------------------*/
-	HAL_TIM_Base_Start_IT(&htim3);
-	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-	HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
-	HAL_ADCEx_Calibration_Start(&hadc1);
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adc_store, 11);
+/*---------------------------------------------------
+ Initialization function
+ ---------------------------------------------------*/
+HAL_TIM_Base_Start_IT(&htim3);
+HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_4);
+HAL_ADCEx_Calibration_Start(&hadc1);
+HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adc_store, 11);
 //	HAL_UART_Receive_IT(&huart1, (uint8_t*) &serialRxPort2, 1);
 
 #if RTC_ACTIVE

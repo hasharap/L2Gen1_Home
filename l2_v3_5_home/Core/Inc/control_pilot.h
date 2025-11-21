@@ -25,6 +25,8 @@
 #define CPMAX			53
 #define CPMIN			10
 
+#define MIN_ISET        7.0
+
 #define CP_FAULT		1.8
 
 #define STATEA_MAX	130

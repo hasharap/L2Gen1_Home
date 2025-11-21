@@ -85,7 +85,7 @@ extern volatile uint8_t data_filter_done;
 
 #define A_TO_C_Transition		1
 
-#define UV_dynamic				1
+#define UV_dynamic				0
 
 #define CP_FAULT_CHECK			0
 #define GFI_ERROR				1

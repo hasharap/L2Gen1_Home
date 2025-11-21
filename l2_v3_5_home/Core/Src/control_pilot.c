@@ -13,8 +13,8 @@
 
 #include "control_pilot.h"
 
-
-
+/* remove  */
+uint16_t MyCurrent =0;
 
 #define OLD_CP		0
 
@@ -101,9 +101,7 @@ uint8_t vehicle_checkOutCounter = 0;
 bool cp_calibrate = false;
 
 
-float max_phase_current =0;
-int16_t SetCPduty = 0;
-int16_t SetCurrent = 0 ;
+float   SetCurrent = 0;
 
 
 
@@ -368,6 +366,9 @@ void getCP_voltage(void)
 			}
 		}
 	}
+
+
+
 }
 
 void calibrateCP(int action)
@@ -469,6 +470,10 @@ static uint8_t uv_handle_state = 0;
 static uint8_t uv_stable_count = 0;
 static uint16_t lowest_voltage = 0;
 
+/*
+ *
+ */
+
 static inline uint16_t find_lowest(uint16_t a, uint16_t b, uint16_t c)
 {
 	uint16_t lowest = a; // Assume a is the lowest initially
@@ -486,35 +491,86 @@ static inline uint16_t find_lowest(uint16_t a, uint16_t b, uint16_t c)
 	return lowest;
 }
 
-static inline float find_highest(uint16_t a, uint16_t b, uint16_t c)
+
+const float Ts = 5.0;
+
+// controller gains (tuned)
+const float Kp = 0.2;
+const float Ki = 0.15;
+
+// optional constants
+const float RATE_LIMIT = 2.0;
+const float HYSTERESIS = 1;    // use when ever want
+const float ALPHA  = 1;//0.85;     // consider 85% effect of new reading
+
+//State
+float u_prev = MIN_ISET;
+float Iuti_f = 0.0;
+float Ich_f  = 0.0;
+
+
+
+float PI_Controller(StateType StateNow)
 {
-    uint16_t highest = a; // Assume 'a' is the highest initially
 
-    if (b > highest) // Check if 'b' is greater than the current highest
-    {
-        highest = b;
-    }
+	float Iuti_raw =  networkSide_data.maxCurrent_req;
+	float Imax     = (float)charger_configGet.max_current;
 
-    if (c > highest) // Check if 'c' is greater than the current highest
-    {
-        highest = c;
-    }
+	if(networkSide_data.maxCurrent_req > Imax)
+	{
+		controlSide_data.warnings.bits.UC_warn =1;  // up the flag of under current warning
+	}
+	else
+	{
+		controlSide_data.warnings.bits.UC_warn = 0;  // down the flag of under current warning
+	}
 
-    return  (float)(highest/100);
+	if(StateNow != STATE_C2)
+	{
+		Iuti_f = 0.0;
+		u_prev = MIN_ISET;
+
+		return MIN_ISET ;
+	}
+
+	// filter readings
+	Iuti_f      =  ALPHA*Iuti_raw + (1-ALPHA)*Iuti_f;
+
+	// Iuti to be at or below Imax
+	float error = (Imax - Iuti_f);
+
+	float delta = Kp*error + Ki*Ts*error ;
+	float update     = u_prev   + delta ;
+
+    // increasing current step by step
+	if (update > u_prev + RATE_LIMIT){ update = u_prev + RATE_LIMIT;}
+
+
+	//clamp to bound
+	if(update > Imax){ update = Imax ;}
+	if(update < MIN_ISET) { update = MIN_ISET; }
+
+	u_prev = update ;
+
+	return update;
+
 }
 
+
+
 /*
- * id the load balancing enable ,  balance current with removing utilizing current from maximum current
+ *  if the load balancing enable ,  balance current with removing utilizing current from maximum current
  *  Iu = Ilb -Ich
  *  if load balancing disable sending app_current or another defined current from network side
  */
 void load_balance(bool uv_en)
 {
+	MyCurrent = (powerSide_data.current.IA/100);
+
 	if (load_balance5s.timeout_5s == false)
 	{
 		return;
 	}
-
 	tick_clear(&load_balance5s);
 
 
@@ -592,12 +648,13 @@ void load_balance(bool uv_en)
 			return;
 		}
 
-		max_phase_current = find_highest(powerSide_data.current.IA , powerSide_data.current.IB ,powerSide_data.current.IC);
+
+		/* Algorithm with PI controller when load balancing Enable */
 
 		if(networkSide_data.loadBalancing_en == 1)
 		{
-			/* Calculation has some type conversion issues */
-			SetCurrent = (charger_configGet.max_current - networkSide_data.maxCurrent_req + max_phase_current);
+
+			SetCurrent =  PI_Controller(sm.currentState);
 			controlSide_data.controlPilot.PWMSET = (uint16_t)(SetCurrent / POINT6);
 
 		}
@@ -651,19 +708,13 @@ void monitor_cp(void)
 	if(controlSide_data.controlPilot.PWMSET >= MaxCpDuty)
 	{
 		controlSide_data.controlPilot.PWMSET = MaxCpDuty;
-		controlSide_data.warnings.bits.UC_warn = 0;  // down the flag of under current warning
+
 	}
 	else if (controlSide_data.controlPilot.PWMSET < CPMIN)
 	{
 		controlSide_data.controlPilot.PWMSET = CPMIN;
-		controlSide_data.warnings.bits.UC_warn =1;  // up the flag of under current warning
 
 	}
-	else
-	{
-		controlSide_data.warnings.bits.UC_warn = 0;  // down the flag of under current warning
-	}
-
 
 
 }
